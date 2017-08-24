@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="bids_ext_form_view" model="ir.ui.view">
+            <field name="name">bids.ext.form.view</field>
+            <field name="model">purchase.requisition</field>
+            <field name="inherit_id" ref="purchase_requisition.view_purchase_requisition_form"/>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <xpath expr="//form/sheet/div[@name='button_box']/button[@class='oe_stat_button']" position="before">
+                    <button name="create_purchase_order" type="object" string="Request Quotations"
+                     class="btn-primary" style="margin-right: 10px;"
+                     attrs="{'invisible': ['|', ('line_ids','=',[]),('state', 'in', ('draft' ,'open','done'))]}"/>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>
