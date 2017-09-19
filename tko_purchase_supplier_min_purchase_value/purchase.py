@@ -30,6 +30,12 @@ from odoo.exceptions import Warning
 class PurchaseOrder(models.Model):
     _inherit = "purchase.order"
 
+    @api.multi
+    def button_confirm(self):
+        res = super(PurchaseOrder, self).button_confirm()
+        self.with_context(warn=True).get_valid_order()
+        return res
+
     @api.one
     @api.depends('partner_id', 'order_line.product_id', 'order_line.product_qty', 'order_line.price_unit', 'order_line')
     def get_valid_order(self):
