@@ -45,6 +45,6 @@ class PurchaseOrder(models.Model):
             self.valid_order = True
         else:
             if context.get('warn', False):
-                raise Warning(u'Order total is less than allowed for supplier!')
+                raise Warning(u"The Order's total amount %s is lesser then the minimum purchase amount %s for %s supplier!" % (str(self.amount_total), str(self.partner_id.min_purchase_value), str(self.partner_id.name)))
 
     valid_order = fields.Boolean(compute=get_valid_order, string="Is Visible", default=False)
