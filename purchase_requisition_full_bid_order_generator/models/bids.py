@@ -18,7 +18,8 @@ class PurchaseRequisition(models.Model):
                 'product_uom':product.uom_po_id.id,
                 'price_unit':product.standard_price,
                 'name':product.name,
-                'date_planned':fields.Datetime.now()
+                'date_planned':fields.Datetime.now(),
+                'taxes_id': [(6, 0, [x.id for x in product.supplier_taxes_id])],
                 }
         line_id = self.env['purchase.order.line'].create(vals)
         return line_id
@@ -51,7 +52,7 @@ class PurchaseRequisition(models.Model):
                         line = self.env['purchase.requisition.line'].search(
                             [('product_id', '=', product.id), ('requisition_id', '=', self.id)], limit=1)
                         p_line = self.prepare_requisition_purchase_order_line(line, product, qty, purchase.id, supplier)
-                        p_line.onchange_product_id()
+#                         p_line.onchange_product_id()
         else:
             # Create RFQ to the supplier which has all the products
             supplier_obj = self.env['res.partner']
