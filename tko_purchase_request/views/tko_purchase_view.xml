@@ -12,4 +12,16 @@
             </xpath>
         </field>
     </record>
+    <record model="ir.ui.view" id="purchase_request_form_analytic_account">
+        <field name="model">purchase.request</field>
+        <field name="inherit_id" ref="purchase_request.view_purchase_request_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='line_ids']/tree//field[@name='analytic_account_id']" position="attributes">
+                <attribute name="domain">[('type','=','n')]</attribute>
+            </xpath>
+            <xpath expr="//field[@name='line_ids']/form//field[@name='analytic_account_id']" position="attributes">
+                <attribute name="domain">[('type','=','n')]</attribute>
+            </xpath>
+        </field>
+    </record>
 </odoo>

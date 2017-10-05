@@ -14,7 +14,7 @@
     'application': False,
     'installable': True,
     'auto_install': False,
-    'depends': ['purchase',
+    'depends': ['purchase_request',
                 'tko_account_analytic_type',
                 ],
     'external_dependencies': {
