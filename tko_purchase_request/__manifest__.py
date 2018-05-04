@@ -14,7 +14,9 @@
     'application': False,
     'installable': True,
     'auto_install': False,
-    'depends': ['purchase_request',
+    'depends': ['purchase',
+                'purchase_request',
+                'purchase_request_to_rfq',
                 'tko_account_analytic_type',
                 ],
     'external_dependencies': {
@@ -26,8 +28,6 @@
     'css': [],
     'demo_xml': [],
     'test': [],
-    'data': [
-        'views/tko_purchase_view.xml',
-             ],
+    'data': ['views/tko_purchase_view.xml']
 
 }

@@ -2,7 +2,7 @@
 <odoo>
     <record model="ir.ui.view" id="purchase_order_supplier_form_analytic_account">
         <field name="model">purchase.order</field>
-        <field name="inherit_id" ref="purchase.purchase_order_form" />
+        <field name="inherit_id" ref="purchase.purchase_order_form"/>
         <field name="arch" type="xml">
             <xpath expr="//field[@name='order_line']/tree//field[@name='account_analytic_id']" position="attributes">
                 <attribute name="domain">[('type','=','n')]</attribute>
@@ -12,9 +12,31 @@
             </xpath>
         </field>
     </record>
+
+    <record model="ir.ui.view" id="purchase_request_purchase_order_line_tree_sub">
+        <field name="model">purchase.order.line</field>
+        <field name="inherit_id" ref="purchase_request_to_rfq.purchase_order_line_tree_sub"/>
+        <field name="arch" type="xml">
+            <field name="date_planned" position="after">
+                <field name="invoice_status"/>
+            </field>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="rfq_purchase_order_line_form2_sub">
+        <field name="model">purchase.order.line</field>
+        <field name="inherit_id" ref="purchase_request_to_rfq.purchase_order_line_form2_sub"/>
+        <field name="arch" type="xml">
+            <field name="company_id" position="after">
+                <field name="invoice_status"/>
+            </field>
+        </field>
+    </record>
+
+
     <record model="ir.ui.view" id="purchase_request_form_analytic_account">
         <field name="model">purchase.request</field>
-        <field name="inherit_id" ref="purchase_request.view_purchase_request_form" />
+        <field name="inherit_id" ref="purchase_request.view_purchase_request_form"/>
         <field name="arch" type="xml">
             <xpath expr="//field[@name='line_ids']/tree//field[@name='analytic_account_id']" position="attributes">
                 <attribute name="domain">[('type','=','n')]</attribute>
