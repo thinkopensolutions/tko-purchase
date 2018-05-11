@@ -17,7 +17,6 @@
     'depends': ['purchase',
                 'purchase_request',
                 'purchase_request_to_rfq',
-                'tko_account_analytic_type',
                 ],
     'external_dependencies': {
         'python': [],
